@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * Makes up the user interface (text based) of the application.
  * Responsible for all user interaction, like displaying the menu
  * and receiving input from the user.
+ * Hei sondre gut
  * 
  * @author asty
  * @version 1.0

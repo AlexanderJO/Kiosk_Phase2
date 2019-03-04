@@ -1,5 +1,6 @@
 import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Represents a book registry, holding a collection of books. This book registry will be included in
@@ -310,7 +311,16 @@ public class BookRegistry
     }
 
     /**
-     * Lists all books in the collection.
+     * Returns the iterator over the bookList.
+     */
+    public Iterator<Book> getIterator()
+    {
+        return this.bookList.iterator();
+    }
+
+    /**
+     * Return all books in the collection.
+     * @return all books in the collection.
      */
     public ArrayList<Book> getAllBooks()
     {
