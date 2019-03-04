@@ -1,6 +1,8 @@
 
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Makes up the user interface (text based) of the application.
@@ -18,16 +20,19 @@ public class ApplicationUI
     // to fit your application (i.e. replace "prodct" with "litterature"
     // etc.
     private String[] menuItems = {
-        "1. List all products",
-        "2. Add new product",
-        "3. Find a product by name",
+        "1. List all books",
+        "2. Add new book",
+        "3. Find a book by name",
     };
+
+    private BookRegistry bookRegistry;
 
     /**
      * Creates an instance of the ApplicationUI User interface.
      */
     public ApplicationUI() 
     {
+        this.bookRegistry = new BookRegistry();
     }
 
     /**
@@ -48,11 +53,11 @@ public class ApplicationUI
                 switch (menuSelection) 
                 {
                     case 1:
-                        this.listAllProducts();
+                        this.listAllBooks();
                         break;
 
                     case 2:
-                        this.addNewProduct();
+                        this.addNewBook();
                         break;
 
                     case 3:
@@ -105,7 +110,11 @@ public class ApplicationUI
         }
         return menuSelection;
     }
-    
+
+    /**
+     * Reads the input from the user.
+     */
+
     // ------ The methods below this line are "helper"-methods, used from the menu ----
     // ------ All these methods are made privat, since they are only used by the menu ---
     
@@ -121,9 +130,15 @@ public class ApplicationUI
     /**
      * Lists all the products/literature in the register
      */
-    private void listAllProducts()
+    private void listAllBooks()
     {
-        System.out.println("listAllProducts() was called");
+        Iterator<Book> bookListIt = this.bookRegistry.getIterator();
+
+        while ( bookListIt.hasNext() )
+        {
+            Book book = bookListIt.next();
+            System.out.println("Title: " + book.getTitle() + ", Publisher: " + book.getDatePublished());
+        }
     }
 
     
@@ -137,10 +152,31 @@ public class ApplicationUI
      * Remember to also handle invalid input from the
      * user!!
      */
-    private void addNewProduct()
+    private void addNewBook()
     {
-        System.out.println("addNewProduct() was called");
-        
+        // Brukeren har nå valgt å legge til en bok
+        System.out.println("Please enter the title of the book: ");
+        Scanner readerTitle = new Scanner(System.in);                // Creates a scanner that waits for user input.
+        String title = readerTitle.nextLine();                       // Waits for the user to push enter.
+
+        System.out.println("Please enter the publisher of the book: ");
+        Scanner readerPublisher = new Scanner(System.in);                // Creates a scanner that waits for user input.
+        String publisher = readerPublisher.nextLine();                       // Waits for the user to push enter.
+
+        System.out.println("Please enter the author of the book: ");
+        Scanner readerAuthor = new Scanner(System.in);                // Creates a scanner that waits for user input.
+        String author = readerAuthor.nextLine();                      // Waits for the user to push enter.
+
+        System.out.println("Please enter the edition of the book: ");
+        Scanner readerEdition = new Scanner(System.in);                // Creates a scanner that waits for user input.
+        String edition = readerEdition.nextLine();                     // Waits for the user to push enter.
+
+        System.out.println("Please enter the publishing date of the book: ");
+        Scanner readerDatePublished = new Scanner(System.in);                // Creates a scanner that waits for user input.
+        String datePublished = readerDatePublished.nextLine();                     // Waits for the user to push enter.
+
+        // Legg inn boka i registeret
+        this.bookRegistry.addBook(title, publisher, author, edition, datePublished);
     }
 
     /**
