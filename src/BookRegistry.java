@@ -1,33 +1,12 @@
 import java.util.Iterator;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Represents a book registry, holding a collection of books. This book registry will be included in
  * a literature collection, either published, periodical or non-periodical.
  * 
  * The object Book contains the parameters Title, Author, Publisher, Date published, Edition and Series.
- * 
- * And for the time being, BlueJ is used as the User Interface for Phase 1.
- * For Phase 1, only class Book will be implemented.
- * 
- * In this registry you can;
- * <p>
- *  <ul>
- *  <li>    Add book with title, publisher, author, edition and publish date   </li>
- *  <li>    Add book with title, publisher, author, edition, publish date and series </li>
- *  <li>    Add book to series </li>
- *  <li>    Remove book    </li>
- *  <li>    List and get all books    </li>
- *  <li>    List and get all books by title </li>
- *  <li>    List and get all books by author </li>
- *  <li>    List and get all books by publisher </li>
- *  <li>    List and get all books in series </li>
- *  </ul>
- *  <p>
- *  <b> Important note: fillBookListWithDummies to be made private when released to customer.
- *                      Method used for debugging purposes.</b>
- *  
+ *
  *  @author     Alexander J. Overvåg, Sondre Nerhus, Gustav S. Hagen
  *  @version    v1.0 (beta) 2019.02.13
  */

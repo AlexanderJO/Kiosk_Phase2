@@ -1,18 +1,32 @@
 
-import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
  * Makes up the user interface (text based) of the application.
  * Responsible for all user interaction, like displaying the menu
  * and receiving input from the user.
- * Hei sondre gut
  *
- * @author asty
- * @version 1.0
+ * In this registry you can;
+ * <p>
+ *  <ul>
+ *  <li>    Add book with title, publisher, author, edition and publish date   </li>
+ *  <li>    Add book with title, publisher, author, edition, publish date and series </li>
+ *  <li>    Add book to series </li>
+ *  <li>    Remove book    </li>
+ *  <li>    List and get all books    </li>
+ *  <li>    List and get all books by title </li>
+ *  <li>    List and get all books by author </li>
+ *  <li>    List and get all books by publisher </li>
+ *  <li>    List and get all books in series </li>
+ *  </ul>
+ *  <p>
+ *  <b> Important note: fillBookListWithDummies to be made private when released to customer.
+ *                      Method used for debugging purposes.</b>
+ *
+ *  @author     Alexander J. Overvåg, Sondre Nerhus, Gustav S. Hagen
+ *  @version    v1.0 (beta) 2019.02.13
  */
 public class ApplicationUI
 {
@@ -341,14 +355,14 @@ public class ApplicationUI
     {
         if (book.getSeries() == null)
         {
-            System.out.println("Title: " + book.getTitle() + ", Publisher: " + book.getDatePublished()
+            System.out.println("Title: " + book.getTitle() + ", Publisher: " + book.getPublisher()
                     + ", Author: " + book.getAuthor() + ", Edition: " + book.getEdition()
                     + ", Date published: " + book.getDatePublished());
         }
 
         else
         {
-            System.out.println("Title: " + book.getTitle() + ", Publisher: " + book.getDatePublished()
+            System.out.println("Title: " + book.getTitle() + ", Publisher: " + book.getPublisher()
                     + ", Author: " + book.getAuthor() + ", Edition: " + book.getEdition()
                     + ", Date published: " + book.getDatePublished() + ", Series: " + book.getSeries());
         }
