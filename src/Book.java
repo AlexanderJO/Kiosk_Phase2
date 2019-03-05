@@ -16,9 +16,9 @@
 public class Book
 {
     // Fields
-    private String title;
-    private String publisher;
-    private String author;
+    private final String title;
+    private final String publisher;
+    private final String author;
     private String edition;
     private String datePublished;
     private String series;

@@ -6,27 +6,7 @@ import java.util.ArrayList;
  * a literature collection, either published, periodical or non-periodical.
  * 
  * The object Book contains the parameters Title, Author, Publisher, Date published, Edition and Series.
- * 
- * And for the time being, BlueJ is used as the User Interface for Phase 1.
- * For Phase 1, only class Book will be implemented.
- * 
- * In this registry you can;
- * <p>
- *  <ul>
- *  <li>    Add book with title, publisher, author, edition and publish date   </li>
- *  <li>    Add book with title, publisher, author, edition, publish date and series </li>
- *  <li>    Add book to series </li>
- *  <li>    Remove book    </li>
- *  <li>    List and get all books    </li>
- *  <li>    List and get all books by title </li>
- *  <li>    List and get all books by author </li>
- *  <li>    List and get all books by publisher </li>
- *  <li>    List and get all books in series </li>
- *  </ul>
- *  <p>
- *  <b> Important note: fillBookListWithDummies to be made private when released to customer.
- *                      Method used for debugging purposes.</b>
- *  
+ *
  *  @author     Alexander J. Overvåg, Sondre Nerhus, Gustav S. Hagen
  *  @version    v1.0 (beta) 2019.02.13
  */
@@ -124,42 +104,6 @@ public class BookRegistry
     }
 
     /**
-     * Lists book by title. Title is assumed to be unique.
-     * 
-     * @param title Title of the book.
-     */
-    public void listBookByTitle(String title)
-    {
-        boolean found = false;
-        int index = 0;
-
-        System.out.println("### Start of list ###");
-
-        while ( ( index < this.bookList.size() ) && !found )
-        {
-            Book book = this.bookList.get(index);
-
-            if ( book.getTitle().equals(title) )
-            {
-                if ( book.getSeries() == null )
-                {
-                    printBook(book);
-                }
-
-                else
-                {
-                    printBookWithSeries(book);
-                }
-                found = true;
-            }
-
-            index++;
-        }
-
-        System.out.println("### End of list ###");
-    }
-
-    /**
      * Return book by title. Title is assumed to be unique.
      * 
      * @param title Title of the book.
@@ -189,165 +133,11 @@ public class BookRegistry
     }
 
     /**
-     * Lists all books by author.
-     * 
-     * @param author Author of the book.
+     * Returns the iterator over the bookList.
      */
-    public void listBooksByAuthor(String author)
+    public Iterator<Book> getIterator()
     {
-        System.out.println("### Start of list ###");
-
-        for ( Book book : this.bookList )
-        {
-            if ( book.getAuthor().equals(author) )
-            {
-                if ( book.getSeries() == null )
-                {
-                    printBook(book);
-                }
-
-                else
-                {
-                    printBookWithSeries(book);
-                }
-            }
-        }
-
-        System.out.println("### End of list ###");
-    }
-
-    /**
-     * Return all books by author.
-     * 
-     * @param author Author of the book.
-     * @return Return all books by author.
-     */
-    public ArrayList<Book> getBooksByAuthor(String author)
-    {
-        ArrayList<Book> bookList = new ArrayList();
-
-        for ( Book book : this.bookList )
-        {
-            if ( book.getAuthor().equals(author) )
-            {
-                bookList.add(book);
-            }
-        }
-
-        return bookList;
-    }
-
-    /**
-     * Lists all books by publisher.
-     * 
-     * @param publisher Publisher of the book.
-     */
-    public void listBooksByPublisher(String publisher)
-    {
-        System.out.println("### Start of list ###");
-
-        for ( Book book : this.bookList )
-        {
-            if ( book.getPublisher().equals(publisher) )
-            {
-                if ( book.getSeries() == null )
-                {
-                    printBook(book);
-                }
-
-                else
-                {
-                    printBookWithSeries(book);
-                }
-            }
-        }
-
-        System.out.println("### End of list ###");
-    }
-
-    /**
-     * Lists all books by publisher.
-     * 
-     * @param publisher Publisher of the book.
-     * @return Returns the publisher of the book.
-     */
-    public ArrayList<Book> getBooksByPublisher(String publisher)
-    {
-        ArrayList<Book> bookList = new ArrayList();
-
-        for ( Book book : this.bookList )
-        {
-            if ( book.getPublisher().equals(publisher) )
-            {
-                bookList.add(book);
-            }
-        }
-
-        return bookList;
-    }
-
-    /**
-     * Lists all books in the collection.
-     */
-    public void listAllBooks()
-    {
-        System.out.println("### Start of list ###");
-
-        for ( Book book : this.bookList )
-        {
-            if ( book.getSeries() == null )
-            {
-                printBook(book);
-            }
-
-            else
-            {
-                printBookWithSeries(book);
-            }
-        }
-
-        System.out.println("### End of list ###");
-    }
-
-    /**
-     * Lists all books in the collection.
-     */
-    public ArrayList<Book> getAllBooks()
-    {
-        return this.bookList;
-    }
-    
-    /**
-     * Lists all books in the collection.
-     */
-    // public Iterator<Book> getAllIteratedBooks()
-    {
-        
-        // return this.bookList;
-    }
-
-    /**
-     * List book without series.
-     * 
-     * @param book Takes in the object Book.
-     */
-    private void printBook(Book book)
-    {
-        System.out.println("Title: " + book.getTitle() + ", " + "Publisher: " + book.getPublisher() +
-            ", " + "Author: " + book.getAuthor() + ", " + "Edition: " + book.getEdition() + ", " +
-            "Published date: " + book.getDatePublished() );
-    }
-
-    /**
-     * List book with series.
-     * 
-     * @param book Takes in the object Book.
-     */
-    private void printBookWithSeries(Book book)
-    {
-        System.out.println("Title: " + book.getTitle() + ", " + "Publisher: " + book.getPublisher() +
-            ", " + "Author: " + book.getAuthor() + ", " + "Edition: " + book.getEdition() + ", " +
-            "Published date: " + book.getDatePublished() + ", " + "Book series: " + book.getSeries() );
+        return this.bookList.iterator();
     }
 
     public void fillBookListWithDummies()
@@ -364,5 +154,4 @@ public class BookRegistry
         this.bookList.add(new Book("Book 9", "Publisher 3", "Author 2", "Third Edition", "2019.01.05"));
         this.bookList.add(new Book("Book 10", "Publisher 1", "Author 2", "First Edition", "2019.01.06"));
     }
-
 }
